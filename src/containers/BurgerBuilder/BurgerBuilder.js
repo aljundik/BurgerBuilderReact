@@ -55,6 +55,7 @@ class BurgerBuilder extends Component {
         }).reduce((pre,cur) => {
             return pre+cur;
         },0);
+        //this.setState({purchasable: true});
 
         return sum > 0;
     }
@@ -92,18 +93,7 @@ class BurgerBuilder extends Component {
     // }
 
     continueHandler = () => {
-
-        const queryParams= [];
-        for(let i in this.props.ingredients){
-            queryParams.push(`${encodeURIComponent(i)}=${encodeURIComponent(this.props.ingredients[i])}`)
-        }
-        queryParams.push('price='+this.props.totalPrice);
-
-        const queryString = queryParams.join('&')
-        this.props.history.push({
-            pathname: '/checkout',
-            search: '?' + queryString
-        });
+        this.props.history.push('/checkout');
     }
 
     render(){
@@ -131,9 +121,9 @@ class BurgerBuilder extends Component {
           modalActive = (
             <Modal 
               backdropActive={this.backDropClicked}
-              show={this.state.purchasable}
+              show={this.updatePurchase(this.props.ingredients)}
               > 
-              {orderSummary}
+              {orderSummary} 
             </Modal>);
       }
       let burger = <Spinner />
@@ -152,16 +142,10 @@ class BurgerBuilder extends Component {
            </Aux>
         )
       }
-
-
-
-
         return(
           <Aux>
-            
             {modalActive}
-            {burger}
-               
+            {burger}   
           </Aux>
         );
     }
