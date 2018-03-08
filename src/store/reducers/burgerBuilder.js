@@ -1,21 +1,23 @@
 import * as actionsTypes from '../actions/actions';
-const initState= {
+const initState = {
     ingredients: null,
     totalPrice: 3,
-    error: false
-    
+    error: false,
+    errorMessage: '',
 }
 
-const INGPRICES= {
+const INGPRICES = {
     meat: 1,
     cheese: 0.7,
     salad: 1.2,
     bacon: 0.8
 }
 
-const reducer =(state= initState, action) => {
-    switch(action.type){
-        case(actionsTypes.ADD_INGREDIENT):
+const reducer = (state = initState, action) => {
+    switch (action.type) {
+
+
+        case (actionsTypes.ADD_INGREDIENT):
             return {
                 ...state,
                 ingredients: {
@@ -24,32 +26,28 @@ const reducer =(state= initState, action) => {
                 },
                 totalPrice: state.totalPrice + INGPRICES[action.ingredientName]
             };
-            
-        case(actionsTypes.REMOVE_INGREDIENT):
+
+        case (actionsTypes.REMOVE_INGREDIENT):
             return {
                 ...state,
                 ingredients: {
-                    ...state.ingredients,                    
+                    ...state.ingredients,
                     [action.ingredientName]: state.ingredients[action.ingredientName] - 1
                 },
                 totalPrice: state.totalPrice - INGPRICES[action.ingredientName]
             };
 
-        case(actionsTypes.SET_INGREDIENT):
+        case (actionsTypes.SET_INGREDIENT):
             return {
                 ...state,
                 ingredients: action.ingredients,
-                error: false
-            };
-
-        case(actionsTypes.REMOVE_INGREDIENT):
-            return {
-                ...state,
-                error: true
+                error: false,
+                totalPrice: 3
             };
 
         default: return {
-            ...state
+            ...state,
+            errorMessage: action.error
         }
     }
 }

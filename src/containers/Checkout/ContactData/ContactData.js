@@ -6,6 +6,8 @@ import classes from './ContactData.css';
 import Button from '../../../components/UI/Button/Button';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import Input from '../../../components/UI/Input/Input';
+import {postOrder} from '../../../store/actions/order';
+
 
 
 class ContactData extends Component {
@@ -74,7 +76,8 @@ class ContactData extends Component {
                 shouldValidate: false,
                 validation:{
                     required: false
-                },value:'fastest',
+                },
+                value:'fastest',
                 touched:false,                
                 elementConfig: {
                     options: [
@@ -91,7 +94,7 @@ class ContactData extends Component {
 
     submitHandler = (e) => {
         e.preventDefault();
-        this.setState({ loading: true });
+        //this.setState({ loading: true });
         const formData= {};
         for (let ele in this.state.orderForm) {
             formData[ele]= this.state.orderForm[ele].value;
@@ -103,16 +106,9 @@ class ContactData extends Component {
             orderData: formData
         }
 
-        axios.post('/order.json', order).then(
-            response => {
-                this.setState({ loading: false });
-                console.log(response);
-                this.props.history.push('/');
-            }
-        ).catch(error => {
-            this.setState({ loading: false });
-            console.log(error);
-        });
+        this.props.onPostOrder(order);
+
+        this.props.history.push('/');
 
     }
     changeHandler= (event,id) => {
@@ -175,7 +171,7 @@ class ContactData extends Component {
           </form>
         );
 
-        if (this.state.loading) {
+        if (this.props.loading) {
             form = <Spinner />
         }
         return (
@@ -190,13 +186,25 @@ class ContactData extends Component {
 ContactData.propTypes = {
     ingredients: PropTypes.object,
     price: PropTypes.number,
-    history: PropTypes.any
+    history: PropTypes.any,
+    onPostOrder: PropTypes.func,
+    loading: PropTypes.bool
 }
 
 const mapStateToProps = state => {
     return {
-        ingredients: state.ingredients,
-        price: state.totalPrice
+        ingredients: state.burgerBuilder.ingredients,
+        price: state.burgerBuilder.totalPrice,
+        loading: state.order.loading,
+
     }
 }
-export default connect(mapStateToProps)(ContactData);
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onPostOrder: (order) => {
+            dispatch(postOrder(order));
+        } 
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(ContactData);
