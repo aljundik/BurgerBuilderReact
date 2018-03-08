@@ -9,7 +9,7 @@ import Summary from '../../components/Burger/Summary/Summary';
 import axios from '../../../src/axios-orders';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/WithError/WithError';
-import * as actions from '../../store/actions';
+import {addIngredient, removeIngredient} from '../../store/actions/burgerBuilder';
 
 
 
@@ -172,17 +172,14 @@ const mapDispatchToProps= dispatch => {
     return {
 
         onAddIngredients: (ingName) => {
-            dispatch({
-            type: actions.ADD_INGREDIENT,
-            ingredientName: ingName     
-        })},
+            dispatch(
+                addIngredient(ingName)
+            )},
 
         onRemoveIngredients: (ingName) => {
-            dispatch({
-             type: actions.REMOVE_INGREDIENT,
-             ingredientName: ingName
-            })
-        }
+            dispatch(
+                removeIngredient(ingName)
+            )}
     };
 };
 
