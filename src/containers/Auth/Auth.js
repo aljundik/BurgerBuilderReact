@@ -63,7 +63,6 @@ class Auth extends Component {
                 touched: true,
             }
         };
-        console.log('touched',updatedControles);
         this.setState({authForm: updatedControles});
     }
 

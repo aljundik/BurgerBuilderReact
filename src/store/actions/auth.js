@@ -9,7 +9,6 @@ const authStart = () => {
 }
 const authSuccess = (data) => {
     const {localId, idToken} = data;
-    console.log('ID & TOKEN', { localId, idToken});
     return {
         type: actionTypes.AUTH_SUCCESS,
         token: idToken,

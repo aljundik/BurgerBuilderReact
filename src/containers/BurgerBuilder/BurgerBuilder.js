@@ -36,7 +36,6 @@ class BurgerBuilder extends Component {
         this.setState({
             checkoutActive: true
         });
-        console.log('checkout clicked', this.state.checkoutActive);
     }
 
     backDropClicked = () => {

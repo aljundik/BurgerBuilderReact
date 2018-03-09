@@ -94,7 +94,6 @@ class ContactData extends Component {
 
     submitHandler = (e) => {
         e.preventDefault();
-        //this.setState({ loading: true });
         const formData= {};
         for (let ele in this.state.orderForm) {
             formData[ele]= this.state.orderForm[ele].value;
@@ -151,7 +150,6 @@ class ContactData extends Component {
         let form = (
           <form onSubmit={this.submitHandler}>
             {formElementsArray.map(formElement => {
-                console.log(formElement);
                 return (
                   <Input
                     elementType={formElement.config.elementType}

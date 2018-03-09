@@ -18,7 +18,6 @@ class Orders extends Component {
     render(){   
 
         let ord = <Spinner />
-        console.log('this.props.orders',this.props.orders);
         if(this.props.orders) {
              ord =  this.props.orders === null ? <Spinner /> :(this.props.orders.map(order => {
                 return <Order key={order.id} ingredients={order.ingredients} price={order.price} />

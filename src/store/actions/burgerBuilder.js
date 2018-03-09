@@ -19,7 +19,6 @@ import axios from '../../axios-orders';
 };
 
 const setIngredients = (ingredients) => {
-    console.log('inside setIngredients',ingredients);
     return {
         type: actionTypes.SET_INGREDIENT,
         ingredients: ingredients
