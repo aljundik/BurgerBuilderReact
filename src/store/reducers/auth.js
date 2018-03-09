@@ -32,6 +32,15 @@ const reducer = (state = initState, action) => {
                 loading: false
             };
 
+        case(actions.LOGOUT): 
+            return {
+                ...state,
+                token: null,
+                id: null,
+                error: null,
+                loading: false
+            };
+
         default: return state;
         
     }

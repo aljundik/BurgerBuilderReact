@@ -24,6 +24,20 @@ const authFail = (error) => {
     }
 }
 
+const logout = () => {
+    return {
+        type: actionTypes.LOGOUT
+    }
+}
+
+const logOutTimer = (timer) => {
+    return dispatch => {
+        setTimeout(() =>{
+            dispatch(logout());
+        } ,timer* 1000)
+    }
+} 
+
 
 const auth = (email, password, isSignedUp) => {
     return dispatch => {
@@ -40,6 +54,7 @@ const auth = (email, password, isSignedUp) => {
 
         axios.post(url, userData)
         .then(response => {
+            dispatch(logOutTimer(response.data.expiresIn));
             dispatch(authSuccess(response.data));
         })
         .catch(error => {
