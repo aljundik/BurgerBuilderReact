@@ -8,7 +8,7 @@ const navitems =  (props) => {
     return (
       <div>
         <ul className={classes.NavItems}>
-          <NavItem link='/orders'>Orders </NavItem> 
+          {props.isAuth ?<NavItem link='/orders'>Orders </NavItem> : null }
           <NavItem  link='/'>Burger Builder </NavItem>
           {authintcated }
         </ul>

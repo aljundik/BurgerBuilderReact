@@ -29,7 +29,7 @@ const BuildControls = (props) => {
         <button className={classes.OrderButton}
           disabled={!props.purchasable}
           onClick={props.activeCheckout}
-        >Checkout Now!</button >
+        >{props.isAuth ? 'Checkout Now! ': 'SignUp to order'}</button >
       </div>
     )
 
@@ -39,7 +39,8 @@ BuildControls.propTypes = {
     disabledInfo: PropTypes.object,
     price: PropTypes.number,
     purchasable: PropTypes.bool,
-    activeCheckout: PropTypes.func
+    activeCheckout: PropTypes.func,
+    isAuth: PropTypes.bool
 }
 
 export default BuildControls;

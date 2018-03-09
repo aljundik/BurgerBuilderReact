@@ -18,6 +18,9 @@ const AUTH_FAIL='AUTH_FAIL';
 const AUTH_START='AUTH_START';
 const LOGOUT = 'LOGOUT';
 
+const SET_AUTH_REDIRECT_PATH = 'SET_AUTH_REDIRECT_PATH';
+
+
 
 
 
@@ -37,7 +40,8 @@ export {
     AUTH_SUCCESS,
     AUTH_FAIL,
     AUTH_START,
-    LOGOUT
+    LOGOUT,
+    SET_AUTH_REDIRECT_PATH
 
 
 }

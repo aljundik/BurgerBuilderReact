@@ -63,9 +63,15 @@ const auth = (email, password, isSignedUp) => {
     }
 }
 
-
+const setAuthRedirectPath = (path) => {
+    return {
+        type: actionTypes.SET_AUTH_REDIRECT_PATH,
+        path
+    }
+}
 
 export {
     auth,
-    logout
+    logout,
+    setAuthRedirectPath
 };

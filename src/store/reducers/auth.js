@@ -4,7 +4,8 @@ const initState= {
     token: null,
     id: null,
     loading: false,
-    error: null
+    error: null,
+    authRedirectPath: '/'
 }
 
 const reducer = (state = initState, action) => {
@@ -39,6 +40,13 @@ const reducer = (state = initState, action) => {
                 id: null,
                 error: null,
                 loading: false
+            };
+
+        case(actions.LOGOUT): 
+            return {
+                ...state,
+                authRedirectPath: action.path
+
             };
 
         default: return state;
