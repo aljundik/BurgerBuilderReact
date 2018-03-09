@@ -86,9 +86,10 @@ class BurgerBuilder extends Component {
               {orderSummary} 
             </Modal>);
       }
+
       let burger = this.props.error ? <Spinner /> : null
 
-      if(ingredients) { // double check here if it works
+      if(ingredients) { 
          burger = (
            <Aux>
              <Burger ingredients={ingredients} />
@@ -103,7 +104,7 @@ class BurgerBuilder extends Component {
         )
       }
         return(
-          <Aux>
+          <Aux> 
             {modalActive}
             {burger}   
           </Aux>

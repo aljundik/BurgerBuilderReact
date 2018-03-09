@@ -21,8 +21,8 @@ const sideDrawer = (props) => {
             <Logo clicked={props.closed} />
           </div>
           <nav>
-            <NavItems />
-          </nav>
+            <NavItems isAuth={props.isAuth} />
+          </nav> 
         </div>
       </Aux>
     )
@@ -30,6 +30,7 @@ const sideDrawer = (props) => {
 
 sideDrawer.propTypes = {
     closed: PropTypes.func,
-    show: PropTypes.bool
+    show: PropTypes.bool,
+    isAuth: PropTypes.bool
 }
 export default sideDrawer;

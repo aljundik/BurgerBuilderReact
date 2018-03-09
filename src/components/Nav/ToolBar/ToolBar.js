@@ -12,7 +12,7 @@ const toolbar = (props) => {
       <DrawerToggleButton clicked={props.toggleButton} />
       <Logo height='76%' /> 
       <nav className={classes.DesktopOnley}>
-        <NavItems />    
+        <NavItems isAuth={props.isAuth} />    
       </nav>    
     </header>
   )
@@ -20,6 +20,7 @@ const toolbar = (props) => {
 
 
 toolbar.propTypes = {
-  toggleButton: PropTypes.func
+  toggleButton: PropTypes.func,
+  isAuth: PropTypes.bool
 }
 export default toolbar;

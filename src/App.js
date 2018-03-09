@@ -5,6 +5,7 @@ import Checkout from '../src/containers/Checkout/Checkout';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import Orders from '../src/containers/Orders/Orders';
 import Auth from '../src/containers/Auth/Auth';
+import Logout from '../src/containers/Auth/Logout/Logout';
 
 
 class App extends Component {
@@ -16,11 +17,11 @@ class App extends Component {
             <Route path='/checkout' component={Checkout} />
             <Route path='/orders' component={Orders} />
             <Route path='/auth' component={Auth} />            
-            <Route path='/' component={BurgerBuilder} />
+            <Route path='/logout' component={Logout} /> 
+            <Route  path='/' exact component={BurgerBuilder} />
           </Switch>
         </Layout>
       </Router>
-      
     );
   }
 }

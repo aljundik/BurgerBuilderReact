@@ -1,6 +1,8 @@
 import React, { Component }  from 'react';
 import Aux from '../Aux/Aux';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom'
 import classes from './Layout.css'; 
 import Toolbar from '../../components/Nav/ToolBar/ToolBar';
 import SideDrawer from '../../components/Nav/SideDrawer/SideDrawer';
@@ -21,10 +23,11 @@ class Layout extends React.Component {
   }  
 
   render() {
+    console.log(this.props.isAuth);
     return (
       <Aux>
-        <Toolbar toggleButton={this.DrawerToggleButtonHandler} />
-        <SideDrawer show={this.state.backDropStatus} closed={this.backDropCloseHandler} />
+        <Toolbar isAuth={this.props.isAuth} toggleButton={this.DrawerToggleButtonHandler} />
+        <SideDrawer isAuth={this.props.isAuth} show={this.state.backDropStatus} closed={this.backDropCloseHandler} />
         <main className={classes.content}>
           {this.props.children}
         </main>
@@ -35,7 +38,14 @@ class Layout extends React.Component {
 
 
 Layout.propTypes=  {
-    children: PropTypes.node
+    children: PropTypes.node,
+    isAuth: PropTypes.bool
 }
 
-export default Layout;
+const mapStateToProps = state =>{
+  return {
+    isAuth: state.auth.token !== null
+  }
+}
+
+export default withRouter(connect(mapStateToProps)(Layout));

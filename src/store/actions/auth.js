@@ -66,5 +66,6 @@ const auth = (email, password, isSignedUp) => {
 
 
 export {
-    auth
+    auth,
+    logout
 };
