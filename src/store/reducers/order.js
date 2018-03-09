@@ -44,7 +44,6 @@ const reducer = (state = initState, action) => {
 
 
         case (actionsTypes.FETCH_ORDER_SUCCESS):
-            console.log('FETCH_ORDER_SUCCESS');
 
             return {
                 ...state,

@@ -12,7 +12,7 @@ import { fetchOrder } from '../../store/actions/order';
 class Orders extends Component {
     
     componentDidMount(){
-        this.props.onFetchOrder();
+        this.props.onFetchOrder(this.props.token);
     }
 
     render(){   
@@ -35,19 +35,21 @@ class Orders extends Component {
 
 Orders.propTypes = {
     onFetchOrder: PropTypes.func,
-    orders: PropTypes.any
+    orders: PropTypes.any,
+    token: PropTypes.string
 }
 
 const mapStateToProps = state => {
     return {
-        orders: state.order.orders
+        orders: state.order.orders,
+        token: state.auth.token
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFetchOrder: () => {
-            dispatch(fetchOrder());
+        onFetchOrder: (token) => {
+            dispatch(fetchOrder(token));
         }
     }
 }

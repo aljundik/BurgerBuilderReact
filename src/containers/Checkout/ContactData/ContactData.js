@@ -106,7 +106,7 @@ class ContactData extends Component {
             orderData: formData
         }
 
-        this.props.onPostOrder(order);
+        this.props.onPostOrder(order,this.props.token);
 
         this.props.history.push('/');
 
@@ -188,7 +188,8 @@ ContactData.propTypes = {
     price: PropTypes.number,
     history: PropTypes.any,
     onPostOrder: PropTypes.func,
-    loading: PropTypes.bool
+    loading: PropTypes.bool,
+    token: PropTypes.string
 }
 
 const mapStateToProps = state => {
@@ -196,14 +197,15 @@ const mapStateToProps = state => {
         ingredients: state.burgerBuilder.ingredients,
         price: state.burgerBuilder.totalPrice,
         loading: state.order.loading,
+        token: state.auth.token
 
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onPostOrder: (order) => {
-            dispatch(postOrder(order));
+        onPostOrder: (order,token) => {
+            dispatch(postOrder(order,token));
         } 
     }
 }

@@ -33,7 +33,6 @@ const postOrderStart = () => {
 
 
 const fetchOrderSucess = (orders) => {
-    console.log('from insided the action creator fetchOrderSucess',orders);
     
     return {
         orders,
@@ -55,11 +54,11 @@ const fetchOrderStart = () => {
     }
 }
 
-const fetchOrder = () => {
+const fetchOrder = (token) => {
     return dispatch => {
         dispatch(fetchOrderStart());
         
-        axios.get( 'https://reactburger-63715.firebaseio.com/order.json' )
+        axios.get( `https://reactburger-63715.firebaseio.com/order.json?auth=${token}` )
         .then( response => {
             const arr= [];
             for(let item in response.data){
@@ -77,10 +76,10 @@ const fetchOrder = () => {
     }
 }
 
- const postOrder = (order) => {
+ const postOrder = (order,token) => {
     return dispatch =>{
         dispatch(postOrderStart());
-        axios.post('/order.json', order).then(
+        axios.post(`/order.json?auth=${token}`, order).then(
             response => {
                 dispatch(postOrderSucess( order, response.data.name));
             }
@@ -101,8 +100,4 @@ export {
     fetchOrderSucess,
     fetchOrderFail,
     fetchOrderStart
-
-
-
 }
-
