@@ -12,33 +12,8 @@ import { fetchOrder } from '../../store/actions/order';
 class Orders extends Component {
     
     componentDidMount(){
-
         this.props.onFetchOrder();
-        // const arr= [];
-        // axios.get( 'https://reactburger-63715.firebaseio.com/order.json' )
-        // .then( response => {
-        //     for(let item in response.data){
-        //          arr.push({
-        //              ...response.data[item],
-        //              id: item
-        //          });
-        //     }
-        //    //console.log(arr);
-        //    this.setState({
-        //     orders: [...arr],
-        //     loading:false
-        //     });
-        // } )
-        // .catch( error => {
-        //     this.setState({
-        //         loading: false
-        //     });
-        // } );
-
-       // console.log('the orders from server are :', this.state.orders);
     }
-
-
 
     render(){   
 
@@ -49,9 +24,7 @@ class Orders extends Component {
                 return <Order key={order.id} ingredients={order.ingredients} price={order.price} />
               })) ;
 
-        }
-
-          
+        } 
         return(
           <div> 
             {ord}
@@ -70,6 +43,7 @@ const mapStateToProps = state => {
         orders: state.order.orders
     }
 }
+
 const mapDispatchToProps = dispatch => {
     return {
         onFetchOrder: () => {

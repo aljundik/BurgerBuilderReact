@@ -7,6 +7,7 @@ import { BrowserRouter  } from "react-router-dom";
 
 import BurgerReducer from './store/reducers/burgerBuilder';
 import OrderReducer from './store/reducers/order';
+import AuthReducer from './store/reducers/auth';
 
 
 import './index.css';
@@ -18,7 +19,8 @@ import registerServiceWorker from './registerServiceWorker';
  
  const rootReducer = combineReducers({
    burgerBuilder: BurgerReducer,
-   order: OrderReducer
+   order: OrderReducer,
+   auth: AuthReducer
  });
  
  
