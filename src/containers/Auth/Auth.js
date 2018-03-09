@@ -122,10 +122,7 @@ class Auth extends Component {
             <Button
               btnType='Success'
               >Submit</Button>
-            <Button
-              btnType='Danger'
-              clicked={this.handleSwitch}
-              > {this.state.isSignedUp ? 'Switch to sign in': 'Switch to Sign up'}</Button>
+
           </form>
           );
 
@@ -142,6 +139,10 @@ class Auth extends Component {
             {authRedirect}
             { error }          
             {formAuth}
+            <Button
+              btnType='Danger'
+              clicked={this.handleSwitch}
+              > {this.state.isSignedUp ? 'Switch to sign in': 'Switch to Sign up'}</Button>
           </div>
         )
     }
