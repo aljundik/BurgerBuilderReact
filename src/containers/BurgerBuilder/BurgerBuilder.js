@@ -22,7 +22,7 @@ import {setAuthRedirectPath} from '../../store/actions/auth';
 
 
 
-class BurgerBuilder extends Component {
+export class BurgerBuilder extends Component {
 
     state = {
         checkoutActive: false,
