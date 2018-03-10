@@ -109,7 +109,7 @@ class Auth extends Component {
             return (
               <Input
                 elementType={formElement.config.elementType}
-                elementConfig={formElement.config.elementConfig}
+                type={formElement.config.elementConfig.type}
                 value={formElement.config.elementConfig.placeholder}
                 key={formElement.id}
                 invalid={!formElement.config.valid}

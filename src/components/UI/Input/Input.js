@@ -17,8 +17,7 @@ const input = (props) => {
         inputEelment= <input 
           className={inputClasses.join(' ')} 
           onChange={props.changed}          
-          {...props.elementconfig} 
-          
+          type={props.type}
           placeholder={props.value} />;
             break;
 
@@ -26,7 +25,6 @@ const input = (props) => {
         inputEelment= <textarea 
           className={inputClasses.join(' ')}
           onChange={props.changed}           
-          {...props.elementconfig} 
           
           placeholder={props.value} />;
             break;
@@ -74,7 +72,8 @@ input.propTypes ={
     elementConfig: PropTypes.any,
     changed: PropTypes.func,
     invalid: PropTypes.bool,
-    shouldValidate: PropTypes.bool
+    shouldValidate: PropTypes.bool,
+    type:PropTypes.string
 
 }
 

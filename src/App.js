@@ -22,8 +22,8 @@ class App extends Component {
     let routes = (
       <Switch>
         <Route path='/auth' component={Auth} />            
-        <Route  path='/' exact component={BurgerBuilder} />
-        <Redirect to='/' />
+        
+       
       </Switch>
   
     );
@@ -34,7 +34,7 @@ class App extends Component {
           <Route path='/checkout' component={Checkout} />
           <Route path='/orders' component={Orders} />
           <Route path='/logout' component={Logout} /> 
-          <Redirect to='/' />        
+          <Route  path='/' exact component={BurgerBuilder} />
         </Switch>
   
       )
